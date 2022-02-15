@@ -1,28 +1,32 @@
 <template>
-  <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <div class="container">
+    <div class="nav mb-3">
+      <button>next</button>
+      <button>prev</button>
+    </div>
+    
+    <button-component v-if="indexPage === 1"></button-component>
+
+    <circle-component v-else-if="indexPage === 2"></circle-component>
+
+    <to-do-component v-else-if="indexPage === 3"></to-do-component>
+
+    <form-component v-else></form-component>
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import ButtonComponent from '@/components/ButtonComponent'
+import CircleComponent from '@/components/CircleComponent'
+import ToDoComponent from './components/ToDoComponent'
+import FormComponent from '@/components/FormComponent'
 
 export default {
-  name: 'App',
-  components: {
-    HelloWorld
+  components: {ButtonComponent, CircleComponent, ToDoComponent, FormComponent},
+  data() {
+    return {
+      indexPage: 2
+    }
   }
 }
 </script>
-
-<style lang="scss">
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
-</style>
